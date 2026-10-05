@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Environmental & Disaster Dashboard</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>🌍 Global Environmental & Disaster Dashboard</h1>
+    <p>Real-Time Earth Observation Feed & 12-Variable Environmental Analytics</p>
+  </header>
+
+  <main class="dashboard-container">
+    
+    <!-- TOP SECTION: Centered Top Map Container -->
+    <section class="top-map-section">
+      <div id="map-wrapper">
+        <div id="map"></div>
+      </div>
+    </section>
+
+    <!-- MIDDLE SECTION: Interactive Variable Selector Segment (12 Variables) -->
+    <section class="variable-segment-section">
+      <h3>📊 Select Environmental Variable to Inspect</h3>
+      <div class="variable-grid" id="variable-grid">
+        <button class="var-btn active" data-var="deforestation">🌳 Deforestation</button>
+        <button class="var-btn" data-var="aqi">💨 Air Quality (AQI)</button>
+        <button class="var-btn" data-var="wildfire">🔥 Wildfire Intensity</button>
+        <button class="var-btn" data-var="disaster">🌊 Disaster Risk</button>
+        <button class="var-btn" data-var="temp">🌡️ Surface Temp Anomaly</button>
+        <button class="var-btn" data-var="soil">💧 Soil Moisture</button>
+        <button class="var-btn" data-var="precip">🌧️ Precipitation Rate</button>
+        <button class="var-btn" data-var="ndvi">🌿 Vegetation (NDVI)</button>
+        <button class="var-btn" data-var="wind">🌬️ Wind Vector</button>
+        <button class="var-btn" data-var="co2">🏭 Carbon (CO₂)</button>
+        <button class="var-btn" data-var="uv">☀️ UV Index</button>
+        <button class="var-btn" data-var="water">🧊 Surface Water</button>
+      </div>
+    </section>
+
+    <!-- BOTTOM SECTION: Live Disaster Stream & Dynamic Metrics Matrix -->
+    <section class="bottom-data-section">
+      
+      <!-- Left Box: NASA Real-Time Event Alerts -->
+      <div class="panel-card">
+        <h2>🔴 Live Global NASA Alerts</h2>
+        <div id="news-feed" class="news-feed">
+          <div class="news-item">Connecting to NASA live stream...</div>
+        </div>
+      </div>
+
+      <!-- Center Box: Active Location Inspector & Hotspot Presets -->
+      <div class="panel-card highlight-card">
+        <h2>Target Location Inspector</h2>
+        <div class="preset-group">
+          <label for="preset-select">Jump to Global Hotspot:</label>
+          <select id="preset-select" class="dropdown">
+            <option value="">-- Choose Location --</option>
+          </select>
+        </div>
+        <div class="target-details">
+          <div id="location-display" class="target-name">Click map or alert to inspect</div>
+          <div id="selected-var-display" class="var-status-title">Active Variable: Deforestation</div>
+          <div id="status" class="status-box">Select a location on the satellite map to compute dynamic variables.</div>
+        </div>
+      </div>
+
+      <!-- Right Box: 12 Environmental Metrics Matrix -->
+      <div class="panel-card full-grid-card">
+        <h2>Real-Time Variable Matrix</h2>
+        <div class="data-grid">
+          <div class="data-card" id="card-deforestation"><label>Deforestation</label><span id="val-deforestation">--</span></div>
+          <div class="data-card" id="card-aqi"><label>Air Quality (AQI)</label><span id="val-aqi">--</span></div>
+          <div class="data-card" id="card-wildfire"><label>Wildfire MW</label><span id="val-wildfire">--</span></div>
+          <div class="data-card" id="card-disaster"><label>Disaster Alert</label><span id="val-disaster">--</span></div>
+          <div class="data-card" id="card-temp"><label>Temp Anomaly</label><span id="val-temp">--</span></div>
+          <div class="data-card" id="card-soil"><label>Soil Moisture</label><span id="val-soil">--</span></div>
+          <div class="data-card" id="card-precip"><label>Precipitation</label><span id="val-precip">--</span></div>
+          <div class="data-card" id="card-ndvi"><label>NDVI Score</label><span id="val-ndvi">--</span></div>
+          <div class="data-card" id="card-wind"><label>Wind Speed</label><span id="val-wind">--</span></div>
+          <div class="data-card" id="card-co2"><label>CO₂ Level</label><span id="val-co2">--</span></div>
+          <div class="data-card" id="card-uv"><label>UV Radiation</label><span id="val-uv">--</span></div>
+          <div class="data-card" id="card-water"><label>Water Extent</label><span id="val-water">--</span></div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
